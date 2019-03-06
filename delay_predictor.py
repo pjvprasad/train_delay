@@ -1,7 +1,6 @@
 import tkinter as tk
 import sys
 from data_manager import *
-#from date_Entry import *
 
 
 class main_window(tk.Tk):
@@ -17,7 +16,6 @@ class home(tk.Frame):
 		tk.Frame.__init__(self,parent)
 		self.parent=parent
 		self.selector=Select_popup(container=self.parent,parent=self)
-		#self.ttkcal = Calendar(master=self.parent,parent=self,firstweekday=calendar.SUNDAY)
 		self.response={'station':'','train':''}#,'date':''}
 
 		stationL=tk.Label(self,text='Select The station')
@@ -72,10 +70,6 @@ class home(tk.Frame):
 		self.pack_forget()
 		self.selector.pack()
 
-	'''def date_fun(self):
-		self.ttkcal.responseB=self.dateB
-		self.pack_forget()
-		self.ttkcal.pack()'''
 
 	def get_delay_fun(self):
 		for label in self.response.keys(): 
@@ -83,13 +77,6 @@ class home(tk.Frame):
 				self.statusL.configure(text='Please select a '+label)
 				return
 		global avg_delays
-		"""fate=self.response['date']
-		avg_delays[self.response['station']][self.response['train']]
-		s=fate[0]*8+fate[1]+fate[2]
-		l=[7,1,5,3,6,8,2,9,4]
-		s=sum([int(c) for c in str(s)])
-		s=s%10+s//10
-		self.statusL.configure(text=f'''The expected delay  is:{int(avg_delays[self.response['station']][self.response['train']])+l[s]} minutes''')"""
 		self.statusL.configure(text=f'''The expected delay  is:{int(avg_delays[self.response['station']][self.response['train']])} minutes''')
 
 	def config_fun(self):
